@@ -39,9 +39,9 @@ python main.py --input ./input --video_root ./videos --output ./output.json --mo
 ```
 
 To add you model ./save_200.pth  we change the number of the classifactions(400->9) and the frames(16->5) once prected.
-'''
+```
 python main.py --input ./input --video_root ./video_input/ --output ./output.json --model ./save_200.pth --mode score
-'''
+```
 
 input 是一个文本文件，里面记录着需要分类视频的名字列表，video_input/是一个视频存放目录视频文件存在这个里面。./save_200.pth是用算法3D-resnet训练出来的模型。
 
