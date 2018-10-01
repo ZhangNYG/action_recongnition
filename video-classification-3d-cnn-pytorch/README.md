@@ -38,7 +38,7 @@ To calculate video features for each 16 frames, use ```--mode feature```.
 python main.py --input ./input --video_root ./videos --output ./output.json --model ./resnet-34-kinetics.pth --mode feature
 ```
 
-To add you model ./save_200.pth  we change the number of the classifactions(400->9) and the frames(16->5) once prected.
+To add you model ./save_200.pth（./save_200.pth是用算法3D-resnet训练出来的模型）  we change the number of the classifactions(400->9) and the frames(16->5) once prected.
 ```
 python main.py --input ./input --video_root ./video_input/ --output ./output.json --model ./save_200.pth --mode score
 ```
