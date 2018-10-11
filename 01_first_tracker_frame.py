@@ -69,7 +69,7 @@ mkdir("person_jpg/jumping")
 mkdir("person_jpg/moving")
 mkdir("person_jpg/standing")
 
-PATH = "volley_data_big" # source path
+PATH = "videos" # source path
 all_param = []
 for dir_name in os.listdir(PATH):
     with open(os.path.join(PATH, dir_name) + "/annotations.txt") as f:
@@ -126,6 +126,8 @@ for dir_name in os.listdir(PATH):
                 current_frame = int(dirsub_name) + i + 1
                 current_path = os.path.join(directory_path, str(current_frame)) + ".jpg"
                 frame = Image.open(current_path)
+                if frame.mode != "RGB":
+                    frame.convert('RGB')
                 img_current = np.asarray(frame)
 
                 ok, bbox_person_current = tracker.update(img_current)
@@ -146,6 +148,8 @@ for dir_name in os.listdir(PATH):
                 current_path = os.path.join(directory_path, str(current_frame)) + ".jpg"
 
                 frame = Image.open(current_path)
+                if frame.mode != "RGB":
+                    frame.convert('RGB')
                 img_current = np.asarray(frame)
 
                 ok, bbox_person_current = tracker2.update(img_current)
@@ -156,6 +160,8 @@ for dir_name in os.listdir(PATH):
                     save_change(person_action_class_num_frame, frame, str(20-i-1) , bbox_person_current,dir_name)
             # save itself
             frame = Image.open(init_frame_path)
+            if frame.mode != "RGB":
+                frame.convert('RGB')
             person_action_class_num_frame = os.path.join("person_jpg", action_class, str(num_frame) + "-" + str(person))
             save_change(person_action_class_num_frame, frame, str(20), bbox_person_tup,dir_name)
 
@@ -283,4 +289,3 @@ if __name__ == '__main__':
             # Display result
             cv2.imshow("Tracking", img)
             """
-
