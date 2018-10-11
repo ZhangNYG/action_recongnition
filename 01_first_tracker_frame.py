@@ -163,6 +163,7 @@ for dir_name in os.listdir(PATH):
             if frame.mode != "RGB":
                 frame.convert('RGB')
             person_action_class_num_frame = os.path.join("person_jpg", action_class, str(num_frame) + "-" + str(person))
+            mkdir(person_action_class_num_frame + "_"+dir_name)
             save_change(person_action_class_num_frame, frame, str(20), bbox_person_tup,dir_name)
 
 """
